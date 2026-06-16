@@ -1,0 +1,60 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: '3'
+
+# Load environment variables from .env file for all tasks.
+dotenv: [.env]
+
+tasks:
+  run:
+    desc: Run the main application
+    cmds:
+      - uv run main.py
+
+  install:
+    desc: Install project dependencies and configure development environment
+    summary: |
+      Installs project dependencies using uv and sets up the development environment.
+      This command sets up the Python virtual environment with all required packages.
+    cmds:
+      - uv sync --dev
+
+  add-package:
+    desc: Add a package dependency from PyPI
+    summary: |
+      Adds a package dependency from the default package index.
+      Example: task add-package -- requests
+    cmds:
+      - uv add {{.CLI_ARGS}}
+
+  validate-workflows:
+    desc: Run zizmor checks for GitHub workflows
+    summary: |
+      Scans GitHub Actions workflows for security issues using the same zizmor
+      version as the PR checks workflow.
+    cmds:
+      - uvx zizmor@1.15.2 .github/workflows
+
+  pr:
+    desc: Run all checks for pull request validation
+    cmds:
+      - task: check
+      - task: format
+      - task: test
+      - task: validate-workflows
+
+  test:
+    desc: Run tests with pytest
+    cmds:
+      - uv run pytest
+
+  check:
+    desc: Run type checking
+    cmds:
+      - uvx ty check
+
+  format:
+    desc: Run code formatting and linting
+    cmds:
+      - uvx ruff format
+      - uvx ruff check --fix

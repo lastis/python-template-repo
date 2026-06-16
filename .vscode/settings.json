@@ -1,0 +1,56 @@
+{
+    // The settings below are standardized for this template repository.
+    // Add ruler that matches the project's line length.
+    "editor.rulers": [
+        100
+    ],
+    // Configure the VSCode testing framework to use pytest.
+    "python.testing.pytestArgs": [
+        "."
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    // Hide files & folders that clutter the file explorer.
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/.mypy_cache": true,
+        "**/.pytest_cache": true,
+        "**/.ruff_cache": true,
+        ".uv": true,
+        ".coverage": true,
+    },
+    // Also ignore them in search.
+    "search.exclude": {
+        "**/__pycache__": true,
+        "**/.mypy_cache": true,
+        "**/.pytest_cache": true,
+        "**/.ruff_cache": true,
+        ".uv": true,
+        ".coverage": true,
+    },
+    // Use 2 spaces for indentation in YAML files.
+    "[yaml]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    },
+    // Markdownlint configurations, see link for available rules and default settings.
+    // https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md
+    "markdownlint.config": {
+        // Set custom line lengths and disable table length checks.
+        "MD013": {
+            "line_length": 100,
+            "code_block_line_length": 120,
+            "tables": false
+        },
+        // Set unordered list indentation to 4 spaces which is standard for MkDocs and
+        // works with GitHub's markdown rendering.
+        "MD007": {
+            "indent": 4
+        },
+    },
+    // Always load the .env file into the terminal.
+    "python.terminal.useEnvFile": true,
+    // Remove inlay type hints from ty to avoid apparent line length violations.
+    "ty.inlayHints.callArgumentNames": false,
+    "ty.inlayHints.variableTypes": false,
+}

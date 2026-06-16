@@ -1,0 +1,56 @@
+{
+	// Use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+    "dockerFile": "Dockerfile",
+    "context": "..",
+	"features": {
+		// Use the docker-outside-of-docker feature from Microsoft to install the Docker CLI
+		// and connect to the host's Docker daemon.
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+		// GitHub CLI.
+		"ghcr.io/devcontainers/features/github-cli:1": {}
+	},
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "task install",
+
+	// Add some default VS Code extensions that are installed inside the container.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				// ty Python type checker.
+				"astral-sh.ty",
+				// Ruff Python linter and formatter.
+				"charliermarsh.ruff",
+				// Azure containers features.
+				"ms-azuretools.vscode-containers",
+				// TOML files highlighting and other features.
+				"tamasfe.even-better-toml",
+				// JavaScript / JSON highlighting and other features.
+				"dbaeumer.vscode-eslint",
+				// Copilot assistant.
+				"github.copilot",
+				"github.copilot-chat",
+				// Pull requests and issues management.
+				"github.vscode-pull-request-github",
+				// GitHub Actions
+				"github.vscode-github-actions",
+				// Essential Python extensions. Highlighting, linting, debugging, etc.
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+				"ms-python.debugpy",
+				// Python Jupyter notebooks support.
+				"ms-toolsai.jupyter-keymap",
+				"ms-toolsai.jupyter",
+				"ms-toolsai.jupyter-renderers",
+				// Better visibility of files in the file explorer.
+				"pkief.material-icon-theme",
+				// Resource monitor in the status bar (bar at the bottom of the window).
+				"mutantdino.resourcemonitor",
+				// Markdown linting and features.
+				"davidanson.vscode-markdownlint",
+				// YAML highlighting and features.
+				"redhat.vscode-yaml"
+			]
+		}
+	}
+}
