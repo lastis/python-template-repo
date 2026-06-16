@@ -44,7 +44,6 @@ Always prefer `task <name>` over running tools directly. Common tasks:
 - `task format` — `uvx ruff format` then `uvx ruff check --fix`
 - `task validate-workflows` — `uvx zizmor` on `.github/workflows`
 - `task pr` — runs check + format + test + validate-workflows (use before opening a PR)
-- `task add-package -- <name>` — add a dependency from PyPI
 
 To run Python directly, use `uv run <command>` (or activate `.venv`).
 
@@ -76,7 +75,6 @@ Code style specified in pyproject.toml via Ruff.
 - Runtime deps go under `[project].dependencies`; dev deps under
   `[dependency-groups].dev`.
 - Use `uv add <pkg>` for public PyPI packages.
-- Use `task add-package -- <pkg>` for runtime dependencies.
 
 ### GitHub Actions
 

@@ -19,14 +19,6 @@ tasks:
     cmds:
       - uv sync --dev
 
-  add-package:
-    desc: Add a package dependency from PyPI
-    summary: |
-      Adds a package dependency from the default package index.
-      Example: task add-package -- requests
-    cmds:
-      - uv add {{.CLI_ARGS}}
-
   validate-workflows:
     desc: Run zizmor checks for GitHub workflows
     summary: |

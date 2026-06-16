@@ -105,7 +105,6 @@ task --list
 | `task test`                 | Run tests with pytest                                       |
 | `task validate-workflows`   | Scan GitHub workflows with zizmor                           |
 | `task pr`                   | Run all checks (check → format → test → validate-workflows) |
-| `task add-package`          | Add a package from PyPI                                     |
 
 ### Dependabot
 
