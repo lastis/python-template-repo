@@ -24,6 +24,7 @@ configurations, and tools to help getting started quickly and keep consistency a
 ├── .env.example                     # Template for required environment variables
 ├── main.py                          # Entry point
 ├── pyproject.toml                   # Project metadata and dependencies
+├── uv.lock                          # Locked dependency versions (managed by uv)
 ├── README.md
 └── Taskfile.yml                     # Task runner commands
 ```
