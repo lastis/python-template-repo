@@ -42,9 +42,23 @@ class AppSettings(BaseSettings):
     @field_validator("*", mode="before")
     @classmethod
     def check_non_empty(cls, v: object) -> object:
-        """Strip whitespace and ensure the value is not empty."""
+        """Strip whitespace, surrounding quotes, and ensure the value is not empty.
+
+        Surrounding quotes are stripped to handle the case where environment variables
+        are loaded from a .env file by tools that do not perform dotenv-style quote
+        stripping (e.g. VS Code terminal integration, PowerShell dotenv loaders).
+        A proper dotenv parser (like python-dotenv) would already strip these quotes,
+        but when the OS environment variable is set directly with literal quote
+        characters, they must be stripped here.
+        """
         if isinstance(v, str):
             stripped = v.strip()
+            # Strip matching surrounding double or single quotes
+            if len(stripped) >= 2 and (
+                (stripped[0] == '"' and stripped[-1] == '"')
+                or (stripped[0] == "'" and stripped[-1] == "'")
+            ):
+                stripped = stripped[1:-1]
             if not stripped:
                 raise ValueError("Value must be a non-empty string")
             return stripped
